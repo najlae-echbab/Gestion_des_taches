@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.backend.task_managing.View.TaskController"
+            style="-fx-background-color: #F5EFE7;">
+
+  <!-- Section supérieure -->
+  <top>
+    <VBox spacing="10" alignment="CENTER" style="-fx-padding: 10; -fx-background-color: #D8C4B6; -fx-border-color: #3E5879; -fx-border-width: 0 0 1 0;">
+
+      <!-- Boutons d'actions -->
+      <HBox spacing="10" alignment="CENTER">
+        <Button text="Ajouter une tâche" onAction="#openAddTaskWindow"
+                style="-fx-background-color: #213555; -fx-text-fill: #F5EFE7; -fx-padding: 5 10; -fx-font-weight: bold; -fx-border-radius: 5px;"/>
+        <Button text="Exporter" onAction="#exportToCSV"
+                style="-fx-background-color: #3E5879; -fx-text-fill: #F5EFE7; -fx-padding: 5 10; -fx-font-weight: bold; -fx-border-radius: 5px;"/>
+        <Button text="Supprimer" onAction="#deleteTask"
+                style="-fx-background-color: #D9534F; -fx-text-fill: #F5EFE7; -fx-padding: 5 10; -fx-font-weight: bold; -fx-border-radius: 5px;"/>
+      </HBox>
+
+      <!-- Barre de recherche et filtres -->
+      <HBox spacing="10" alignment="CENTER" style="-fx-padding: 10; -fx-background-color: #FFFFFF; -fx-border-color: #3E5879; -fx-border-width: 1; -fx-border-radius: 5px;">
+        <TextField fx:id="searchField" promptText="Rechercher"
+                   style="-fx-pref-width: 150px; -fx-border-color: #213555; -fx-border-radius: 5px; -fx-padding: 3;"/>
+        <ComboBox fx:id="filterPriorityBox" promptText="Priorité"
+                  style="-fx-pref-width: 120px; -fx-border-color: #3E5879; -fx-border-radius: 5px; -fx-padding: 3;"/>
+        <ComboBox fx:id="filterCategoryBox" promptText="Catégorie"
+                  style="-fx-pref-width: 120px; -fx-border-color: #3E5879; -fx-border-radius: 5px; -fx-padding: 3;"/>
+        <ComboBox fx:id="filterStatusBox" promptText="Statut"
+                  style="-fx-pref-width: 120px; -fx-border-color: #3E5879; -fx-border-radius: 5px; -fx-padding: 3;"/>
+        <Button text="Appliquer" onAction="#applyFilters"
+                style="-fx-background-color: #3E5879; -fx-text-fill: #F5EFE7; -fx-padding: 5 10; -fx-font-weight: bold; -fx-border-radius: 5px;"/>
+        <Button text="Réinitialiser" onAction="#resetFilters"
+                style="-fx-background-color: #D8C4B6; -fx-text-fill: #213555; -fx-padding: 5 10; -fx-font-weight: bold; -fx-border-radius: 5px;"/>
+      </HBox>
+    </VBox>
+  </top>
+
+  <!-- Section centrale -->
+  <center>
+    <VBox spacing="15" style="-fx-padding: 10;">
+
+      <!-- Statistiques -->
+      <VBox spacing="10" alignment="CENTER" style="-fx-background-color: #FFFFFF; -fx-border-color: #3E5879; -fx-border-width: 1; -fx-border-radius: 5px; -fx-padding: 10;">
+        <HBox spacing="15" alignment="CENTER">
+          <Label text="Statistiques" style="-fx-font-size: 14px; -fx-font-weight: bold; -fx-text-fill: #213555;"/>
+          <Label fx:id="totalTasksLabel" text="Total : 0" style="-fx-font-size: 12px; -fx-text-fill: #3E5879;"/>
+          <Label fx:id="completedTasksLabel" text="Terminées : 0" style="-fx-font-size: 12px; -fx-text-fill: #3E5879;"/>
+          <Label fx:id="pendingTasksLabel" text="À faire : 0" style="-fx-font-size: 12px; -fx-text-fill: #3E5879;"/>
+        </HBox>
+        <HBox spacing="15" alignment="CENTER">
+          <PieChart fx:id="statusPieChart" style="-fx-pref-width: 200px; -fx-pref-height: 150px;"/>
+          <PieChart fx:id="priorityPieChart" style="-fx-pref-width: 200px; -fx-pref-height: 150px;"/>
+        </HBox>
+      </VBox>
+
+      <!-- Table des tâches -->
+      <TableView fx:id="taskTable" style="-fx-background-color: #FFFFFF; -fx-border-color: #3E5879; -fx-border-width: 1; -fx-border-radius: 5px;">
+        <columns>
+          <TableColumn text="Titre" fx:id="titleColumn" style="-fx-pref-width: 150px;"/>
+          <TableColumn text="Priorité" fx:id="priorityColumn" style="-fx-pref-width: 100px;"/>
+          <TableColumn text="Statut" fx:id="statusColumn" style="-fx-pref-width: 100px;"/>
+          <TableColumn text="Date" fx:id="dueDateColumn" style="-fx-pref-width: 120px;"/>
+          <TableColumn text="Actions" fx:id="editColumn" style="-fx-pref-width: 120px;"/>
+        </columns>
+      </TableView>
+
+    </VBox>
+  </center>
+  <ComboBox fx:id="priorityBox" promptText="Priorité"/>
+  <ComboBox fx:id="categoryBox" promptText="Catégorie"/>
+</BorderPane>
+
+

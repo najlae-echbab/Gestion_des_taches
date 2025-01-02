@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.backend.task_managing.View.EditTaskController"
+      spacing="15" alignment="CENTER" style="-fx-padding: 20; -fx-background-color: #F5EFE7; -fx-border-radius: 5px; -fx-background-radius: 5px;">
+
+    <!-- Titre de la page -->
+    <Label text="Modifier une Tâche"
+           style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #213555;"/>
+
+    <!-- Champ de texte pour le titre -->
+    <TextField fx:id="titleField" promptText="Titre"
+               style="-fx-pref-width: 300px; -fx-padding: 10; -fx-border-color: #3E5879; -fx-border-radius: 3px;"/>
+
+    <!-- Champ de texte pour la description -->
+    <TextField fx:id="descriptionField" promptText="Description"
+               style="-fx-pref-width: 300px; -fx-padding: 10; -fx-border-color: #3E5879; -fx-border-radius: 3px;"/>
+
+    <!-- Combobox pour la priorité -->
+    <ComboBox fx:id="priorityBox" promptText="Priorité"
+              style="-fx-pref-width: 300px; -fx-padding: 10; -fx-border-color: #3E5879; -fx-border-radius: 3px;"/>
+
+    <!-- Combobox pour la catégorie -->
+    <ComboBox fx:id="categoryBox" promptText="Catégorie"
+              style="-fx-pref-width: 300px; -fx-padding: 10; -fx-border-color: #3E5879; -fx-border-radius: 3px;"/>
+
+    <!-- Sélecteur de date pour la date d'échéance -->
+    <DatePicker fx:id="dueDatePicker"
+                style="-fx-pref-width: 300px; -fx-padding: 10; -fx-border-color: #3E5879; -fx-border-radius: 3px;"/>
+
+    <!-- Boutons pour annuler et sauvegarder -->
+    <HBox spacing="15" alignment="CENTER">
+        <Button text="Annuler" onAction="#closeWindow"
+                style="-fx-background-color: #D8C4B6; -fx-text-fill: #3E5879; -fx-padding: 10 20; -fx-font-size: 14px; -fx-border-radius: 5px;"/>
+        <Button text="Sauvegarder" onAction="#saveTask"
+                style="-fx-background-color: #213555; -fx-text-fill: #F5EFE7; -fx-padding: 10 20; -fx-font-size: 14px; -fx-border-radius: 5px;"/>
+    </HBox>
+</VBox>
